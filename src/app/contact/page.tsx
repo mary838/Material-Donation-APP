@@ -1,13 +1,19 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Mail, Send, ChevronDown, MessageSquareMore } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, Send, ChevronDown, MessageSquareMore } from "lucide-react";
 
 export default function ContactFAQPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [activeFaq, setActiveFaq] = useState<number | null>(0); // Default open first FAQ
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -15,20 +21,24 @@ export default function ContactFAQPage() {
   const faqs = [
     {
       question: "What items can I donate?",
-      answer: "You can donate clothes, furniture, books, electronics, kitchen items, baby goods, and more. Items should be in usable condition."
+      answer:
+        "You can donate clothes, furniture, books, electronics, kitchen items, baby goods, and more. Items should be in usable condition.",
     },
     {
       question: "How does pickup work?",
-      answer: "Once your donation is matched with an organization, you can schedule a pickup date and time that works for you."
+      answer:
+        "Once your donation is matched with an organization, you can schedule a pickup date and time that works for you.",
     },
     {
       question: "Is there a cost to use KindDrop?",
-      answer: "No! KindDrop is completely free for both donors and receiving organizations."
+      answer:
+        "No! KindDrop is completely free for both donors and receiving organizations.",
     },
     {
       question: "How are organizations verified?",
-      answer: "All NGOs and charities go through a verification process to ensure they are legitimate and trustworthy."
-    }
+      answer:
+        "All NGOs and charities go through a verification process to ensure they are legitimate and trustworthy.",
+    },
   ];
 
   return (
@@ -38,12 +48,13 @@ export default function ContactFAQPage() {
         <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
           Contact & FAQ
         </h1>
-        <p className="text-gray-500 text-sm">Have questions? We're here to help.</p>
+        <p className="text-gray-500 text-sm">
+          Have questions? We're here to help.
+        </p>
       </div>
 
       {/* 🚀 Main Split Grid */}
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        
         {/* ✉️ Left Column: Get in Touch */}
         <div className="space-y-8">
           <h2 className="text-lg font-bold text-gray-900">Get in Touch</h2>
@@ -54,14 +65,18 @@ export default function ContactFAQPage() {
               <span className="p-2 bg-white rounded-md shadow-sm">
                 <Mail className="h-5 w-5 text-gray-500" />
               </span>
-              <span className="text-sm text-gray-700">hong.sophaline@institute.pnh.edu.kh</span>
+              <span className="text-sm text-gray-700">
+                hong.sophaline@institute.com
+              </span>
             </div>
 
             <div className="flex items-center gap-3 bg-gray-100 p-4 rounded-md">
               <span className="p-2 bg-white rounded-md shadow-sm">
                 <Send className="h-5 w-5 text-blue-500" />
               </span>
-              <span className="text-sm text-gray-700">+855 70 835 672 / 97 420 570</span>
+              <span className="text-sm text-gray-700">
+                +855 70 835 672 / 97 420 570
+              </span>
             </div>
           </div>
 
@@ -103,37 +118,47 @@ export default function ContactFAQPage() {
         {/* ❓ Right Column: FAQ */}
         <div className="space-y-8">
           <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-gray-900">Frequently Asked Questions</h2>
+            <h2 className="text-lg font-bold text-gray-900">
+              Frequently Asked Questions
+            </h2>
             <MessageSquareMore className="h-5 w-5 text-purple-500" />
           </div>
 
           <div className="space-y-3">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-100 rounded-lg overflow-hidden">
+              <div
+                key={index}
+                className="bg-gray-100 rounded-lg overflow-hidden"
+              >
                 <button
-                  onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                  onClick={() =>
+                    setActiveFaq(activeFaq === index ? null : index)
+                  }
                   className="w-full flex justify-between items-center p-5 text-left focus:outline-none"
                 >
-                  <span className="text-sm font-semibold text-gray-800">{faq.question}</span>
+                  <span className="text-sm font-semibold text-gray-800">
+                    {faq.question}
+                  </span>
                   <ChevronDown
                     className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${
-                      activeFaq === index ? 'transform rotate-180' : ''
+                      activeFaq === index ? "transform rotate-180" : ""
                     }`}
                   />
                 </button>
-                
+
                 <div
                   className={`px-5 overflow-hidden transition-all duration-300 ease-in-out ${
-                    activeFaq === index ? 'max-h-40 pb-5' : 'max-h-0'
+                    activeFaq === index ? "max-h-40 pb-5" : "max-h-0"
                   }`}
                 >
-                  <p className="text-xs text-gray-600 leading-relaxed">{faq.answer}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </div>
   );
